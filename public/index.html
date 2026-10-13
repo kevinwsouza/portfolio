@@ -156,6 +156,18 @@ h2 { font-size: clamp(32px, 5vw, 52px); margin-bottom: 36px; }
 .job ul { padding-left: 18px; color: var(--muted); display: grid; gap: 6px; }
 .job li::marker { color: var(--pink); }
 
+.job .about { color: var(--muted); font-size: 13px; margin-top: 6px; line-height: 1.45; }
+.job .ctx { color: var(--text); opacity: .85; margin-bottom: 12px; }
+.job .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.job .chips span { font-size: 12px; padding: 4px 10px; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border); }
+.apps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.app { padding: 22px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); transition: transform .25s, border-color .25s; }
+.app:hover { transform: translateY(-3px); border-color: rgba(139,92,246,.5); }
+.app .dot { margin-bottom: 14px; }
+.app b { display: block; font-family: "Space Grotesk"; font-size: 19px; }
+.app small { color: var(--cyan); font-size: 12px; font-weight: 500; }
+.app p { color: var(--muted); font-size: 14px; margin-top: 8px; }
+
 /* Skills bento */
 .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
 .cell { padding: 24px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); }
@@ -199,11 +211,13 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding: 40px
   .job { grid-template-columns: 1fr; gap: 10px; }
   .c1, .c2, .c3, .c4, .c5, .c6 { grid-column: span 6; }
   .duo { grid-template-columns: 1fr; }
+  .apps { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 560px) {
   .wrap { padding: 0 16px; }
   .hero { padding: 70px 0 50px; }
   .stats { grid-template-columns: 1fr; }
+  .apps { grid-template-columns: 1fr; }
   .btn { flex: 1 1 100%; justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -302,83 +316,144 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding: 40px
     <h2><span data-l="en">Where I've been shipping.</span><span data-l="pt">Onde andei entregando.</span></h2>
     <div class="timeline">
       <article class="job">
-        <div><div class="when"><span data-l="en">Oct 2025 – Oct 2026</span><span data-l="pt">Out 2025 – Out 2026</span></div><div class="co">KTO Group</div></div>
+        <div><div class="when"><span data-l="en">Oct 2025 – Present</span><span data-l="pt">Out 2025 – Atual</span></div><div class="co">KTO Group</div><div class="about"><span data-l="en">Sports betting &amp; casino platform for the Brazilian market</span><span data-l="pt">Plataforma de apostas esportivas e cassino para o mercado brasileiro</span></div></div>
         <div>
           <h3><span data-l="en">Senior Mobile Developer (Flutter)</span><span data-l="pt">Desenvolvedor Mobile Sênior (Flutter)</span></h3>
-          <div class="area"><span data-l="en">Sports betting &amp; casino · Payments &amp; Operations</span><span data-l="pt">Apostas esportivas e cassino · Pagamentos e Operações</span></div>
+          <div class="area"><span data-l="en">Payments &amp; Operations domain</span><span data-l="pt">Domínio de Pagamentos e Operações</span></div>
+          <p class="ctx"><span data-l="en">The KTO app covers betting, casino, payments and account management. I joined during the migration of a large user base from web to mobile.</span><span data-l="pt">O app da KTO reúne apostas, cassino, pagamentos e gestão de conta. Entrei durante a migração de uma grande base de usuários da web para o mobile.</span></p>
           <ul data-l="en">
-            <li>Built Payments &amp; Operations features during the migration of a large user base from web to mobile (Clean Architecture, Melos monorepo).</li>
-            <li>Delivered biometric authentication for PIX payments, regulatory compliance notices and responsible gaming session limits.</li>
-            <li>BLoC + Freezed sealed classes with a Result&lt;T, E&gt; pattern for typed, exhaustive error handling; DI with GetIt and Injectable.</li>
-            <li>Helped migrate a legacy MVVM codebase to modular Clean Architecture with shared packages and per-feature navigation contracts.</li>
+            <li>Built a biometric authentication flow for PIX transactions.</li>
+            <li>Delivered regulatory compliance notices for accounts restricted under government debt-relief programs (Desenrola Brasil / FIES).</li>
+            <li>Implemented responsible gambling controls such as session limit enforcement.</li>
+            <li>Clean Architecture (domain, infrastructure, presentation) in a Melos monorepo, with a domain layer fully independent from the others and navigation through per-feature router interfaces.</li>
+            <li>BLoC with Freezed sealed classes and a Result&lt;T, E&gt; pattern for typed, exhaustive error handling; DI with GetIt and Injectable.</li>
+            <li>REST integrations with Dio and Retrofit, mapping network exceptions into domain errors.</li>
+            <li>Helped migrate a legacy MVVM codebase to modular Clean Architecture, creating new shared packages; line-by-line code reviews in a Scrum team.</li>
           </ul>
           <ul data-l="pt">
-            <li>Features de Pagamentos e Operações durante a migração de uma grande base de usuários da web para o mobile (Clean Architecture, monorepo Melos).</li>
-            <li>Autenticação biométrica para pagamentos PIX, avisos regulatórios e limites de sessão de jogo responsável.</li>
-            <li>BLoC + sealed classes com Freezed e padrão Result&lt;T, E&gt; para tratamento de erros tipado e exaustivo; DI com GetIt e Injectable.</li>
-            <li>Ajudei a migrar um código legado MVVM para Clean Architecture modular, com pacotes compartilhados e contratos de navegação por feature.</li>
+            <li>Criei o fluxo de autenticação biométrica para transações PIX.</li>
+            <li>Entreguei avisos regulatórios para contas restritas por programas de renegociação de dívidas do governo (Desenrola Brasil / FIES).</li>
+            <li>Implementei controles de jogo responsável, como limite de tempo de sessão.</li>
+            <li>Clean Architecture (domínio, infraestrutura e apresentação) em monorepo Melos, com domínio totalmente independente das outras camadas e navegação por interfaces de rota de cada feature.</li>
+            <li>BLoC com sealed classes do Freezed e padrão Result&lt;T, E&gt; para tratamento de erros tipado e exaustivo; DI com GetIt e Injectable.</li>
+            <li>Integrações REST com Dio e Retrofit, convertendo erros de rede em erros de domínio.</li>
+            <li>Ajudei a migrar um código legado MVVM para Clean Architecture modular, criando novos pacotes compartilhados; code review linha a linha em time Scrum.</li>
           </ul>
+          <div class="chips"><span>Flutter</span><span>BLoC</span><span>Freezed</span><span>GetIt</span><span>Injectable</span><span>Dio</span><span>Retrofit</span><span>Melos</span></div>
         </div>
       </article>
       <article class="job">
-        <div><div class="when"><span data-l="en">Feb 2023 – Present</span><span data-l="pt">Fev 2023 – Atual</span></div><div class="co">GhostCode Tech</div></div>
+        <div><div class="when"><span data-l="en">Feb 2023 – Present</span><span data-l="pt">Fev 2023 – Atual</span></div><div class="co">GhostCode Tech</div><div class="about"><span data-l="en">My independent product studio</span><span data-l="pt">Meu estúdio independente de produtos</span></div></div>
         <div>
           <h3><span data-l="en">Founder &amp; Full-Stack Developer</span><span data-l="pt">Fundador e Desenvolvedor Full-Stack</span></h3>
-          <div class="area"><span data-l="en">Independent product studio</span><span data-l="pt">Estúdio independente de produtos</span></div>
+          <div class="area">Reading Your Soul</div>
+          <p class="ctx"><span data-l="en">I designed, built and run Reading Your Soul on my own — product, mobile, backend, web and infrastructure.</span><span data-l="pt">Idealizei, construí e mantenho o Reading Your Soul sozinho — produto, mobile, backend, web e infraestrutura.</span></p>
           <ul data-l="en">
-            <li>Built Reading Your Soul end to end as a solo developer: Flutter app, Spring Boot API, Python microservice and React web app.</li>
-            <li>JWT auth with BCrypt, email verification and rate limiting; Cloudflare Workers BFF; Docker on Railway; tests with JUnit 5, Mockito and Vitest.</li>
+            <li>Flutter app live on Google Play (BLoC, GoRouter, secure session storage, Portuguese and English).</li>
+            <li>Java 21 / Spring Boot API with PostgreSQL and Flyway: JWT + BCrypt, email verification, rate limiting.</li>
+            <li>Python (FastAPI) microservice that calculates full birth charts: planets, houses and aspects.</li>
+            <li>React + TypeScript website behind a Cloudflare Workers BFF: HttpOnly sessions, CSRF protection, route allowlist and strict security headers.</li>
+            <li>Docker on Railway, daily database backups and database-driven feature flags to release features to testers first.</li>
+            <li>Tests with JUnit 5, Mockito and Vitest.</li>
           </ul>
           <ul data-l="pt">
-            <li>Criei o Reading Your Soul de ponta a ponta, sozinho: app Flutter, API Spring Boot, microserviço Python e site React.</li>
-            <li>Autenticação JWT com BCrypt, confirmação por e-mail e rate limit; BFF em Cloudflare Workers; Docker no Railway; testes com JUnit 5, Mockito e Vitest.</li>
+            <li>App Flutter no ar na Google Play (BLoC, GoRouter, sessão segura, português e inglês).</li>
+            <li>API Java 21 / Spring Boot com PostgreSQL e Flyway: JWT + BCrypt, confirmação de cadastro por e-mail, rate limit.</li>
+            <li>Microserviço Python (FastAPI) que calcula o mapa astral completo: planetas, casas e aspectos.</li>
+            <li>Site React + TypeScript atrás de um BFF em Cloudflare Workers: sessão HttpOnly, proteção CSRF, lista de rotas permitidas e headers de segurança rígidos.</li>
+            <li>Docker no Railway, backup diário do banco e feature flags no banco para liberar funcionalidades primeiro para testadores.</li>
+            <li>Testes com JUnit 5, Mockito e Vitest.</li>
           </ul>
+          <div class="chips"><span>Flutter</span><span>Java 21</span><span>Spring Boot</span><span>PostgreSQL</span><span>Python</span><span>React</span><span>TypeScript</span><span>Cloudflare</span><span>Docker</span></div>
         </div>
       </article>
       <article class="job">
-        <div><div class="when"><span data-l="en">Feb 2025 – Sep 2025</span><span data-l="pt">Fev 2025 – Set 2025</span></div><div class="co">Creare Sistemas</div></div>
+        <div><div class="when"><span data-l="en">Feb 2025 – Sep 2025</span><span data-l="pt">Fev 2025 – Set 2025</span></div><div class="co">Creare Sistemas</div><div class="about"><span data-l="en">Vehicle tracking and management technology</span><span data-l="pt">Tecnologia para rastreamento e gestão de veículos</span></div></div>
         <div>
           <h3><span data-l="en">Mobile Developer (Flutter / iOS)</span><span data-l="pt">Desenvolvedor Mobile (Flutter / iOS)</span></h3>
-          <ul data-l="en"><li>Built Creare Gestor, a new customer app with GPS tracking and Bluetooth vehicle unlocking (Clean Architecture, BLoC, GoRouter).</li></ul>
-          <ul data-l="pt"><li>Criei o Creare Gestor, novo app para clientes com rastreamento por GPS e desbloqueio de veículos via Bluetooth (Clean Architecture, BLoC, GoRouter).</li></ul>
+          <div class="area">Creare Gestor</div>
+          <ul data-l="en">
+            <li>Built Creare Gestor from scratch: a new customer-facing app with GPS tracking and vehicle unlocking over Bluetooth.</li>
+            <li>Flutter with BLoC for state, GetIt for DI, GoRouter for navigation and the http package, on Clean Architecture.</li>
+            <li>REST API integrations following SOLID principles.</li>
+            <li>Scrum team: dailies, sprint planning, reviews and retrospectives.</li>
+          </ul>
+          <ul data-l="pt">
+            <li>Criei o Creare Gestor do zero: novo app para clientes com rastreamento por GPS e desbloqueio de veículos via Bluetooth.</li>
+            <li>Flutter com BLoC para estado, GetIt para injeção de dependência, GoRouter para navegação e o pacote http, em Clean Architecture.</li>
+            <li>Integrações com APIs REST seguindo os princípios SOLID.</li>
+            <li>Time Scrum: dailies, planejamento de sprint, reviews e retrospectivas.</li>
+          </ul>
+          <div class="chips"><span>Flutter</span><span>BLoC</span><span>GetIt</span><span>GoRouter</span><span>GPS</span><span>Bluetooth</span></div>
         </div>
       </article>
       <article class="job">
-        <div><div class="when"><span data-l="en">May 2024 – Jan 2025</span><span data-l="pt">Mai 2024 – Jan 2025</span></div><div class="co">Lumx</div></div>
+        <div><div class="when"><span data-l="en">May 2024 – Jan 2025</span><span data-l="pt">Mai 2024 – Jan 2025</span></div><div class="co">Lumx</div><div class="about"><span data-l="en">Web3 and blockchain infrastructure</span><span data-l="pt">Infraestrutura Web3 e blockchain</span></div></div>
         <div>
           <h3><span data-l="en">iOS Developer</span><span data-l="pt">Desenvolvedor iOS</span></h3>
+          <div class="area"><span data-l="en">Client: Sympla</span><span data-l="pt">Cliente: Sympla</span></div>
           <ul data-l="en">
-            <li>Integrated the Sympla app (Brazil's largest event-ticketing platform, millions of users) with the backend of its Web3 ticket wallet, with each ticket tokenized on Polygon.</li>
-            <li>Features in Swift, UIKit, RxSwift and MVVM-C, with unit tests and CocoaPods.</li>
+            <li>Built new features and maintained the Sympla iOS app — Brazil's largest event-ticketing platform, with millions of users.</li>
+            <li>Integrated the app with the backend of its Web3 ticket wallet, where each ticket was tokenized on the Polygon blockchain.</li>
+            <li>Swift, UIKit and RxSwift with MVVM-C and Clean Architecture; unit tests; CocoaPods.</li>
+            <li>Scrum and Kanban.</li>
           </ul>
           <ul data-l="pt">
-            <li>Integrei o app da Sympla (maior plataforma de ingressos do Brasil, milhões de usuários) ao backend da sua carteira Web3 de ingressos, com cada ingresso tokenizado na Polygon.</li>
-            <li>Features em Swift, UIKit, RxSwift e MVVM-C, com testes unitários e CocoaPods.</li>
+            <li>Criei novas features e mantive o app iOS da Sympla — maior plataforma de ingressos do Brasil, com milhões de usuários.</li>
+            <li>Integrei o app ao backend da carteira Web3 de ingressos, em que cada ingresso era tokenizado na blockchain Polygon.</li>
+            <li>Swift, UIKit e RxSwift com MVVM-C e Clean Architecture; testes unitários; CocoaPods.</li>
+            <li>Scrum e Kanban.</li>
           </ul>
+          <div class="chips"><span>Swift</span><span>UIKit</span><span>RxSwift</span><span>MVVM-C</span><span>Web3</span><span>Polygon</span></div>
         </div>
       </article>
       <article class="job">
-        <div><div class="when"><span data-l="en">Jan 2022 – Feb 2023</span><span data-l="pt">Jan 2022 – Fev 2023</span></div><div class="co">Zallpy Digital</div></div>
+        <div><div class="when"><span data-l="en">Jan 2022 – Feb 2023</span><span data-l="pt">Jan 2022 – Fev 2023</span></div><div class="co">Zallpy Digital</div><div class="about"><span data-l="en">Software development consultancy</span><span data-l="pt">Consultoria de desenvolvimento de software</span></div></div>
         <div>
           <h3><span data-l="en">Mobile Developer (Flutter / iOS)</span><span data-l="pt">Desenvolvedor Mobile (Flutter / iOS)</span></h3>
+          <div class="area"><span data-l="en">Onboarding Z · Unicred Brasil mentorship</span><span data-l="pt">Onboarding Z · mentoria Unicred Brasil</span></div>
           <ul data-l="en">
-            <li>Built Onboarding Z, a Flutter app for employees to track dailies, 1:1s and onboarding.</li>
-            <li>Led the iOS mentorship track for Unicred Brasil's trainee program, coaching 8 trainees and designing the curriculum, challenges and assessments.</li>
+            <li>Built Onboarding Z, a Flutter app where employees follow their information, daily meetings, 1:1s with managers and the admission process, all in one place.</li>
+            <li>Started the app with BLoC and later refactored it to GetX, on Clean Architecture with Dio.</li>
+            <li>Led the iOS mentorship track of Unicred Brasil's trainee program: organized the curriculum, followed the progress of 8 trainees, ran the teaching logistics and designed challenges and assessments.</li>
           </ul>
           <ul data-l="pt">
-            <li>Criei o Onboarding Z, app Flutter para colaboradores acompanharem dailies, 1:1s e onboarding.</li>
-            <li>Liderei a trilha de mentoria iOS do programa de trainees da Unicred Brasil: 8 trainees, currículo, desafios e avaliações.</li>
+            <li>Criei o Onboarding Z, app Flutter em que os colaboradores acompanham suas informações, dailies, 1:1s com gestores e o processo de admissão, tudo num só lugar.</li>
+            <li>Comecei o app com BLoC e depois refatorei para GetX, em Clean Architecture com Dio.</li>
+            <li>Liderei a trilha de mentoria iOS do programa de trainees da Unicred Brasil: organizei o conteúdo, acompanhei a evolução de 8 trainees, cuidei da logística das aulas e preparei desafios e avaliações.</li>
           </ul>
+          <div class="chips"><span>Flutter</span><span>BLoC</span><span>GetX</span><span>Dio</span><span>Swift</span><span data-l="en">Mentoring</span><span data-l="pt">Mentoria</span></div>
         </div>
       </article>
       <article class="job">
-        <div><div class="when"><span data-l="en">Feb 2021 – Dec 2021</span><span data-l="pt">Fev 2021 – Dez 2021</span></div><div class="co">Softdesign</div></div>
+        <div><div class="when"><span data-l="en">Feb 2021 – Dec 2021</span><span data-l="pt">Fev 2021 – Dez 2021</span></div><div class="co">Softdesign</div><div class="about"><span data-l="en">Software development company</span><span data-l="pt">Empresa de desenvolvimento de software</span></div></div>
         <div>
           <h3><span data-l="en">iOS Development Trainee</span><span data-l="pt">Trainee de Desenvolvimento iOS</span></h3>
-          <ul data-l="en"><li>Built SOFTPOINTS, an HR app, from scratch to App Store release.</li></ul>
-          <ul data-l="pt"><li>Criei o SOFTPOINTS, app de RH, do zero até a publicação na App Store.</li></ul>
+          <div class="area"><span data-l="en">Trainee program · iOS track</span><span data-l="pt">Programa de trainee · Trilha iOS</span></div>
+          <ul data-l="en">
+            <li>Built SOFTPOINTS, the company's internal employee-management app, from start to finish and published it on the App Store.</li>
+            <li>UIKit and Foundation with MVVM-C and Clean Architecture, unit tests and CocoaPods; Scrum and Kanban.</li>
+          </ul>
+          <ul data-l="pt">
+            <li>Criei o SOFTPOINTS, app interno de gestão de colaboradores da empresa, do início ao fim, e publiquei na App Store.</li>
+            <li>UIKit e Foundation com MVVM-C e Clean Architecture, testes unitários e CocoaPods; Scrum e Kanban.</li>
+          </ul>
+          <div class="chips"><span>Swift</span><span>UIKit</span><span>MVVM-C</span><span>App Store</span></div>
         </div>
       </article>
+    </div>
+  </section>
+
+  <section id="apps" class="reveal">
+    <div class="eyebrow"><span data-l="en">Apps I've worked on</span><span data-l="pt">Apps em que trabalhei</span></div>
+    <h2><span data-l="en">From idea to the store.</span><span data-l="pt">Da ideia até a loja.</span></h2>
+    <div class="apps">
+      <div class="app"><span class="dot" style="background:rgba(139,92,246,.2)">🔮</span><b>Reading Your Soul</b><small>Flutter · Google Play · Web</small><p><span data-l="en">Astrology, readings and full birth charts. My own product.</span><span data-l="pt">Astrologia, tiragens e mapa astral completo. Meu produto.</span></p></div>
+      <div class="app"><span class="dot" style="background:rgba(236,72,153,.2)">🎰</span><b>KTO</b><small>Flutter</small><p><span data-l="en">PIX biometrics, compliance and responsible gambling.</span><span data-l="pt">Biometria no PIX, avisos regulatórios e jogo responsável.</span></p></div>
+      <div class="app"><span class="dot" style="background:rgba(34,211,238,.18)">🎟️</span><b>Sympla</b><small>iOS · App Store</small><p><span data-l="en">Event tickets for millions, with a Web3 wallet.</span><span data-l="pt">Ingressos para milhões, com carteira Web3.</span></p></div>
+      <div class="app"><span class="dot" style="background:rgba(163,230,53,.16)">🚗</span><b>Creare Gestor</b><small>Flutter</small><p><span data-l="en">GPS tracking and Bluetooth vehicle unlocking.</span><span data-l="pt">Rastreamento GPS e desbloqueio de veículo por Bluetooth.</span></p></div>
+      <div class="app"><span class="dot" style="background:rgba(251,191,36,.18)">👋</span><b>Onboarding Z</b><small>Flutter</small><p><span data-l="en">Dailies, 1:1s and onboarding for employees.</span><span data-l="pt">Dailies, 1:1s e onboarding de colaboradores.</span></p></div>
+      <div class="app"><span class="dot" style="background:rgba(255,255,255,.1)">⭐</span><b>SOFTPOINTS</b><small>iOS · App Store</small><p><span data-l="en">Employee management, built end to end.</span><span data-l="pt">Gestão de colaboradores, feito de ponta a ponta.</span></p></div>
     </div>
   </section>
 
